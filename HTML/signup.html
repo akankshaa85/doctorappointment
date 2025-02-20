@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style1.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>Doctor Signup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(159, 218, 255);
+        }
+        form {
+            border: 2px solid black;
+            background-color: whitesmoke;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 0 auto;
+            text-align: center;
+            margin-top: 8%;
+        }
+        input[type="submit"] {
+            background-color: #45a049;
+        }
+        .row {
+            display: flex;
+            padding: 0px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="row p5 text-center">
+        <div class="col-md-6">
+            <img class="image-fluid" src="/Assets/signup_img.jpg" alt="Signup" height="800px" width="800px">
+        </div>
+        <div class="col-md-6 p4">
+            <form action="/signup" method="post">
+                <h1>Patient Signup</h1>
+                <div>
+                    <i class="fas fa-user"></i>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <br>
+                <div>
+                    <i class="fas fa-envelope"></i>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <br>
+                <div>    
+                    <i class="fas fa-lock"></i>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <br>
+                <div>
+                    <i class="fas fa-lock"></i>
+                    <label for="con_password">Confirm Password:</label>
+                    <input type="password" id="con_password" name="con_password" required>
+                </div>
+                <br>
+                <input type="submit" value="Signup" style="color: black;">
+
+                <p class="or">
+                    ------------OR------------
+                </p>
+                <div class="icons">
+                    <i class="fab fa-google"></i>
+                    <i class="fab fa-facebook"></i>
+                </div>
+                <div class="links">
+                    <p>Already Have an Account?</p>
+                    <button id="signIn">Sign In</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        var password = document.getElementById("password"),
+            con_password = document.getElementById("con_password");
+
+        function validatePassword(){
+            if (password.value != con_password.value) {
+                con_password.setCustomValidity("Passwords Don't Match");
+            } else {
+                con_password.setCustomValidity('');
+            }
+
+            // Additional complexity check
+            var password = /^(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,15}$/;
+            if (!password.value.match(password)) {
+                password.setCustomValidity("Password must be 8 to 15 characters, and include at least one lowercase letter, one uppercase letter, and one numeric digit.");
+            } else {
+                password.setCustomValidity('');
+            }
+        }
+
+        password.onchange = validatePassword;
+        con_password.onkeyup = validatePassword;
+    </script>
+</body>
+</html>

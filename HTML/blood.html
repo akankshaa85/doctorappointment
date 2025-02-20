@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratory Blood Test Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0px;
+            background-color: #f4f4f9;
+            padding: 0px;
+        }
+        .herosection{
+            width:100%;
+            height:100%;
+        }
+        .container {
+            background: white;
+            max-width: 50%;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        label {
+            margin-top: 10px;
+            display: block;
+            font-weight: bold;
+        }
+        input, select {
+            margin-top: 5px;
+            width: 50%;
+            padding: 8px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #5c67f2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #4a54e1;
+        }
+        .imgdiv{
+            width: 50%;
+            max-width: 50%;
+            height: 100%;
+            float:inline-start;
+            overflow:hidden;
+            display:flex;
+            justify-content: center;
+        }
+        .introdiv{
+            width: 50%;
+            max-width: 50%;
+            height: 100%;
+            float:inline-end;
+            overflow:hidden;
+            display:flex;
+            justify-content: center;
+            margin-top:130px;
+        }
+    </style>    
+</head>
+<body>
+    <div class="herosection">
+        <div class="imgdiv">
+            <span>
+            <img src="/Assets/blood_test.jpg">
+        </span>
+        </div>
+        <div class="introdiv">
+            <div class="container">
+                <h1>Laboratory Blood Test Form</h1>
+                <form action="/submit-test" method="post">
+                    <label for="patient-name">Patient Name:</label>
+                    <input type="text" id="patient-name" name="patient_name" required>
+        
+                    <label for="patient-age">Patient Age:</label>
+                    <input type="number" id="patient-age" name="patient_age" required>
+        
+                    <label for="test-type">Type of Test:</label>
+                    <select id="test-type" name="test_type">
+                        <option value="">Please select a test</option>
+                        <option value="cbc">Complete Blood Count (CBC)</option>
+                        <option value="metabolic_panel">Basic Metabolic Panel</option>
+                        <option value="lipid_panel">Lipid Panel</option>
+                        <option value="liver_panel">Liver Panel</option>
+                    </select>
+                    <div>
+                    <button type="submit">Submit Test Request</button>
+                </div>
+                </form>
+            </div>
+        </div>
+        </div>
+
+    </div>
+</body>
+</html>

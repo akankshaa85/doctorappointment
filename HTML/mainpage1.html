@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChooseLyf FrontPage</title>
+    <!-- Google Fonts: Brusher -->
+    <link href="https://fonts.googleapis.com/css2?family=Brusher&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+        // Load Google Translate API when the page loads
+        window.onload = function() {
+            var googleTranslateScript = document.createElement('script');
+            googleTranslateScript.src = 'http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate';
+            googleTranslateScript.async = true;
+            document.head.appendChild(googleTranslateScript);
+        };
+
+        // Function to initialize Google Translate
+        function loadGoogleTranslate() {
+            new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+        }
+
+        function record() {
+            var recognition = new webkitSpeechRecognition();
+            recognition.lang = "en-GB";
+            recognition.onresult = function(event) {
+                console.log(event);
+                document.getElementById('speechToText').value = event.results[0][0].transcript;
+            }
+            recognition.start();
+        }
+        
+        function getLocation() {
+            const locationButton = document.getElementById("get-location");
+            const locationDetails = document.getElementById("location-details");
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const latitude = position.coords.latitude;
+                        const longitude = position.coords.longitude;
+                        fetchLocationDetails(latitude, longitude, locationButton);
+                    },
+                    (error) => {
+                        console.error("Error getting location:", error.message);
+                        locationDetails.textContent = "Error getting location";
+                    }
+                );
+            } else {
+                locationDetails.textContent = "Geolocation is not supported";
+            }
+        }
+
+        function fetchLocationDetails(latitude, longitude, locationButton) {
+            const apiUrl = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const city = data.address.city || data.address.town || data.address.village || data.address.hamlet;
+                    const state = data.address.state || data.address.county;
+                    if (city && state) {
+                        locationButton.textContent = ` ${city}, ${state}`;
+                    } else {
+                        locationButton.textContent = "City or State information not available";
+                    }
+                })
+                .catch(error => {
+                    console.error("Error fetching location details:", error);
+                    locationButton.textContent = "Error fetching location details";
+                });
+        }
+    </script>
+</head>
+<body>
+    <!-- Front Page Background -->
+    <div class="mainsection">
+        <div class="textbasic">
+        <div class="searchbarandall">
+        <!-- Google Translate Element -->
+        <div id="google_translate_element"></div>
+        </div>
+        <div class="searchbarandall1">
+          <button id="get-location" onclick="getLocation()">Get Location</button>
+          <!-- <label for="Speech Recognititon">Speech Recognition</label> -->
+          <input type="text" name="" id="speechToText" placeholder="&#128269; Search,Doctors & Hospitals"
+        onclick=record() >
+        <script>
+          function record(){
+            var recognition = new webkitSpeechRecognition();
+            recognition.lang = "en-GB";
+            recognition.onresult= function(event){
+              console.log(event);
+              document.getElementById('speechToText').value = event.results[0][0].transcript;
+            }
+            recognition.start();
+          }
+        </script>
+        </div>
+        <!-- Script -->
+        <script src="location.js"></script>
+        <!-- Navigation Bar -->
+            <div class="navBar">
+                <span class="navItem" >
+                    <a href="mainpage1.html" >About Us
+                    </a>
+                </span>
+                <span class="navItem">
+                    <a href="appointment.html">Book an Appointment
+                    </a>
+                </span>
+                <span class="navItem">
+                    <a href="labtest.html">Lab Tests
+                    </a>
+                </span>
+                <span class="navItem">
+                    <a href="Dashboard.html">Dashboard
+                    </a>
+                </span>
+            </div>
+            <div class=" textinbasic">
+            <img src="/assets/ChooseLyf.jpg" alt="Check your network" height="330px">
+            <p style="color:rgb(63, 1, 74);font-size:38px;"><b><i>Schedule your Next Healthcare Appointment with Ease.</i></b></p>
+            </div>
+            <a href="login.html"><button id="getstarted">Get Started</button></a>
+        </div>
+        <div class="videoplay ">
+            <video autoplay loop muted>
+                <source src="/assets/vid.mp4" type="video/mp4">
+              </video>
+        </div>
+    </div>
+    <!-- The front page ends here -->
+    <!-- Now the options diseases predaciment starts here -->
+    
+    <!-- Now the options diseases predaciment ends here -->
+
+    <!-- Now basic functionalities start here -->
+    <div class="ele">
+      <div class="row2">
+          <div class="column2">
+            <div class="card2">
+              <img src="/assets/video1.jpg" alt="Video Consultation" style="width:100%;border-radius: 20px;" >
+              <div class="container2">
+                <h2 style="text-align: center;"> Video Consultation</h2>
+                <p class="title2" style="text-align: center;">Connect within 60 sec</p>
+              </div>
+            </div>
+          </div>
+        
+          <div class="column2">
+            <div class="card2">
+              <img src="/assets/consul.jpg" alt="Find Doctors Near You" style="width:100%;border-radius: 20px;">
+              <div class="container2">
+                <h2 style="text-align: center;">Find Doctors Near You</h2>
+                <p class="title2" style="text-align: center;">Confirmed Appointments</p>
+                
+              </div>
+            </div>
+          </div>
+          
+          <div class="column2">
+            <div class="card2">
+              <img src="/assets/lab.jpg" alt="Lab Tests" style="width:100%;border-radius: 20px;">
+              <div class="container2">
+                <h2 style="text-align: center;">Lab Tests</h2>
+                <p class="title2" style="text-align: center;">Report delivery at your home</p>
+               
+              </div>
+            </div>
+          </div>
+          
+          <div class="column2"  style="border-radius: 10px;">
+            <div class="card2">
+              <img src="/assets/services1.png" alt="Services" style="width:100%;border-radius: 20px;">
+              <div class="container2">
+                <h2 style="text-align: center;">Services</h2>
+                <p class="title2" style="text-align: center;">Maintain your profile</p>
+                
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+    <!-- Now basic functionalities end here -->
+
+    <!-- Online consultation of doctors starts here -->
+    <div class="consultdoc">
+    <h1>Consult Top Doctors online for any Health Concern <button id="speciality">View All Specialites</button></h1>
+    <div class="row4">
+      <div class="column4">
+        <img src="/assets/cardio.jpg" alt="Snow" style="height:150px;width:150px;border-radius: 50%;border:1px solid rgb(59, 122, 210)">
+      </div>
+      <div class="column4">
+        <img src="/assets/sexology.png" alt="Forest" style="height:150px;width:150px;border-radius: 50%;border:1px solid rgb(59, 122, 210)">
+      </div>
+      <div class="column4">
+        <img src="/assets/child.png" alt="Mountains" style="height:150px;width:150px;border-radius: 50%;border:1px solid rgb(59, 122, 210)">
+      </div>
+      <div class="column4">
+        <img src="/assets/ent.png" alt="Trees" style="height:150px;width:150px;border-radius: 50%;border:1px solid rgb(59, 122, 210)">
+      </div>
+      <div class="column4">
+        <img src="/assets/digest.png" alt="Seas" style="height:150px;width:150px;border-radius: 50%;border:1px solid rgb(59, 122, 210)">
+      </div>
+    </div>
+    </div>
+    </div>
+    <!-- Online consultation of doctors ends here -->
+    <!-- Now the specialist doctors section starts    -->
+    <div class="doctor">
+        <h1 style="text-align: center;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;font-weight: lighter ;">ChooseLyf Trusted Specialists</h1>
+        <div class="row">
+            <div class="column">
+              <div class="card">
+                <img src="/assets/doctor1.jpg" alt="Jane" style="width:100%">
+                <div class="container">
+                  <h2 style="text-align: center;">Jane Doe</h2>
+                  <p class="title" style="text-align: center;">Pediatrician</p>
+                  <p><button class="button">Get Appointment</button></p>
+                </div>
+              </div>
+            </div>
+          
+            <div class="column">
+              <div class="card">
+                <img src="/assets/doctor2.jpg" alt="Mike" style="width:100%">
+                <div class="container">
+                  <h2 style="text-align: center;">Mike Ross</h2>
+                  <p class="title" style="text-align: center;">Pyschiatrist</p>
+                  <p><button class="button">Get Appointment</button></p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="column">
+              <div class="card">
+                <img src="/assets/doctor3.jpg" alt="Juhi" style="width:100%">
+                <div class="container">
+                  <h2 style="text-align: center;">Juhi Joshi</h2>
+                  <p class="title" style="text-align: center;">Gynecologist</p>
+                  <p><button class="button">Get Appointment</button></p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="column">
+              <div class="card">
+                <img src="/assets/doctor4.jpg" alt="Prem" style="width:100%">
+                <div class="container">
+                  <h2 style="text-align: center;">Prem Pande</h2>
+                  <p class="title" style="text-align: center;">Dermatologist</p>
+                  <p><button class="button">Get Appointment</button></p>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+     <!-- Now the specialist doctors section ends here    -->
+     <!-- the review portion starts here -->
+            <p style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;font-size: 40px;text-align: center;">
+                What Users Say About Us ?
+            </p>
+            <!-- Slideshow container -->
+            <div class="slideshow-container">
+            
+              <!-- Full-width slides/quotes -->
+              <div class="mySlides">
+                <q style="font-size:20px">Very good app. Well thought out about booking/rescheduling/canceling an appointment. 
+                  Also, Doctor's feedback mechanism is good </q>
+                <p class="author" style="font-size:20px">- Riddhi Dethe</p>
+              </div>
+            
+              <div class="mySlides">
+                <q style="font-size:20px"> Easy to book,maintain history. Hassle free from older versions of booking appointment 
+                  via telephone.. Thanks Practo for making it</q>
+                <p class="author" style="font-size:20px">- Dr. Harshada Thorat</p>
+              </div>
+            
+              <div class="mySlides">
+                <q style="font-size:20px">Very helpful. Far easier than doing same things on computer. Allows quick and easy search with 
+                  speedy booking. Even maintains history of doctors visited.</q>
+                <p class="author" style="font-size:20px">- Akanksha Patil</p>
+              </div>
+            
+              <!-- Next/prev buttons -->
+              <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+              <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+            
+            <!-- Dots/bullets/indicators -->
+            <div class="dot-container">
+              <span class="dot" onclick="currentSlide(1)"></span>
+              <span class="dot" onclick="currentSlide(2)"></span>
+              <span class="dot" onclick="currentSlide(3)"></span>
+            </div>                     
+
+    <!-- the review portion ends here -->
+    <!-- some basic articles division -->
+  
+    <div class="articles">
+      <p style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;font-size: 40px;text-align: center;">
+        Read Top Articles from Health Experts</p>
+      <div class="scroll-container">
+        <div class="article-container">
+          <img src="/assets/article1.png" alt="Cinque Terre" width="550" height="350">
+          <div class="text-container">
+            <p style="font-size:20px;"><b  style="font-size:25px;">Tips For Healthy Digestion</b><br>Dr.Vineeta Goel, Dietitian</p>
+          </div>
+        </div>
+        <div class="article-container">
+          <img src="/assets/article2 (1).png" alt="Forest" width="550" height="350">
+          <div class="text-container">
+            <p style="font-size:20px;"><b style="font-size: 25px;">5 Foods That Boost Immunity</b><br>Dr.Nitin Hundre</p>
+            
+          </div>
+        </div>
+        <div class="article-container">
+          <img src="/assets/article3.png" alt="Northern Lights" width="550" height="350">
+          <div class="text-container">
+            <p style="font-size:20px;"><b style="font-size:25px;">Benefits of Drinking Water</b><br>Ms.Swati Kapoor,Nutritionist</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    
+    
+    <!-- some basic articles division ends here-->
+    <!-- javascript for reviews -->
+    <script>
+      var slideIndex = 1;
+      showSlides(slideIndex);
+      
+      function plusSlides(n) {
+        showSlides(slideIndex += n);
+      }
+      
+      function currentSlide(n) {
+        showSlides(slideIndex = n);
+      }
+      
+      function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active";
+      }
+      </script>  
+</body>
+</html>
