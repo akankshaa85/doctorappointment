@@ -1,0 +1,353 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  box-sizing: border-box;
+}
+/* front page background */
+.mainsection {
+  height: 100%;
+  display: flex;
+  flex-direction: row; /* Align items horizontally */
+  background-color:#d3efff;
+}
+.textbasic {
+  width: 50%;
+  /* background-color: rgb(255, 255, 255); */
+  
+}
+.textinbasic{
+  margin:auto;
+  text-align:center;
+  margin-top:10px;
+  max-width:600px;
+}
+.videoplay {
+  width: 50%;
+  overflow:hidden;
+  display:flex;
+  justify-content: center;
+}
+#getstarted {
+  float: right;
+  margin-right: 50px;
+  margin-bottom: 10px; /* Add bottom margin */
+  background-color: rgb(63, 1, 74);
+  font-size: 20px;
+  color: white;
+  border-radius: 25px;
+  padding: 5px;
+}
+
+
+ 
+
+.searchbarandall {
+  padding: 20px; /* Adjust padding as needed */
+  width: 50%; /* Set the width of the search bar */
+  float: left; /* Float the search bar to the left */
+  box-sizing: border-box; /* Include padding and border in the width */
+}
+
+.searchbarandall1 {
+  padding: 10px; /* Adjust padding as needed */
+  width: calc(50% - 10px); /* Set the width of the search bar (50% - padding) */
+  float: left; /* Float the search bar to the left */
+  box-sizing: border-box; /* Include padding and border in the width */
+  margin-top:20px;
+}
+
+.containerw button {
+  display: block;
+  margin: auto;
+  background-color: #42a1ff;
+  color: #ffffff;
+  border: none;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* navigation bar css */
+.navBar {
+  clear:both;
+  max-height: 60px;
+  padding: 10px;
+  text-align: center;
+  margin: 10px auto; /* Adjust the margin to center the navbar vertically */
+}
+.navItem{
+  padding:10px;
+  font-size:20px;
+  font-weight: bolder ;         
+}
+.navItem:hover{
+  background-color:rgb(251, 246, 197);
+}
+a{
+  text-decoration: none;
+}
+/* meet our dcotors cards css */
+.doctor
+{
+  padding:20px;
+  margin-bottom: 10px;
+}
+
+*, *:before, *:after {
+box-sizing: inherit;
+}
+
+.row {
+display: flex;
+justify-content: center;
+}
+
+.column {
+width: 20%;
+margin-bottom: 16px;
+padding: 0 8px;
+}
+  
+@media screen and (max-width: 650px) {
+.column {
+  width: 100%;
+  display: block;
+}
+}
+
+.card {
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container {
+padding: 0 16px;
+}
+
+.container::after, .row::after {
+content: "";
+clear: both;
+display: table;
+}
+
+.title {
+color: rgb(63, 76, 138);
+font-size:large;
+}
+
+.button {
+border: none;
+outline: 0;
+display: inline-block;
+padding: 8px;
+color: white;
+background-color: #000;
+text-align: center;
+cursor: pointer;
+width: 100%;
+}
+
+.button:hover {
+background-color: #555;
+}
+
+/* Reviews portion starts here */
+.review{
+  height:500px;
+  background-color: #e7f8e9;
+  padding:10px;
+}
+/* Slideshow container */
+.slideshow-container {
+  position: relative;
+  background: #f1f1f1f1;
+}
+
+/* Slides */
+.mySlides {
+  display: none;
+  padding: 70px;
+  text-align: center;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -30px;
+  padding: 16px;
+  color: #888;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  position: absolute;
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+  color: white;
+}
+
+/* The dot/bullet/indicator container */
+.dot-container {
+  text-align: center;
+  padding: 20px;
+  background: #ddd;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+/* Add a background color to the active dot/circle */
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Add an italic font style to all quotes */
+q {font-style: italic;}
+
+/* Add a blue color to the author */
+.author {color: cornflowerblue;}
+
+/* articles portion */
+.articles{
+  height :400px;
+  padding:10px;
+}
+div.scroll-container {
+  background-color: #d3efff;
+  overflow: auto;
+  white-space: nowrap;
+  padding: 10px;
+}
+
+div.article-container {
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px;
+}
+
+div.article-container img {
+  display: block;
+  margin: 0 auto;
+}
+
+div.text-container {
+  background-color: white;
+  padding: 3px;
+  text-align: center;
+}
+
+/* basic functionalities */
+.ele
+{
+  padding:30px;
+  margin: 10px;
+}
+
+*, *:before, *:after {
+box-sizing: inherit;
+}
+
+.row2 {
+display: flex;
+justify-content: center;
+}
+
+.column2 {
+width: 20%;
+margin-bottom: 16px;
+padding: 0 10px;
+
+}
+  
+@media screen and (max-width: 650px) {
+.column2 {
+  width: 100%;
+  display: block;
+  
+}
+}
+
+.card2 {
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container2 {
+padding: 0 16px;
+background-color:white;
+}
+
+.container2::after, .row::after {
+content: "";
+clear: both;
+display: table;
+}
+
+.title2 {
+color: rgb(63, 76, 138);
+font-size:large;
+}
+
+/* consultdoc */
+.consultdoc{
+  margin:auto;
+  margin-left:100px;
+  height:300px;
+  padding:10px;
+}
+
+.consultdoc>h1{
+  padding:15px;
+  font-size:30px;
+} 
+
+#speciality{
+  border:2px solid rgb(0, 179, 255);
+  border-radius:3px;
+  font-size:25px;
+  float:inline-end;
+  background-color: white;
+  color: rgb(0, 179, 255);
+  margin-right:100px;
+}
+
+.column4 {
+  float: left;
+  width: 20%;
+  padding: 5px;
+  
+}
+
+/* Clearfix (clear floats) */
+.row4::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.image-text {
+  text-align: center; /* Align text to the center */
+  margin-top: 5px; /* Add some space between the image and the text */
+}
+
